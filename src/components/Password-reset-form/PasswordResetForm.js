@@ -1,30 +1,24 @@
 import React, { useState } from "react";
 import { Card, Form, Button } from "react-bootstrap";
-import "./longinForm.style.css";
-const initialState = {
-  email: "",
-  password: "",
-};
+import "./passwordResetForm.style.css";
 
-function LoginForm() {
-  const [login, setLogin] = useState(initialState);
+function PasswordResetForm() {
+  const [email, setEmail] = useState("");
 
   const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name);
-    setLogin({
-      ...login,
-      [name]: value,
+    const { email, value } = e.target;
+    console.log(value);
+
+    setEmail({
+      value,
     });
-    console.log(login);
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(login);
   };
   return (
-    <div className="loginform">
+    <div className="password-reset-form">
       <Card className="p-4">
         <Form onSubmit={handleOnSubmit}>
           <Form.Group controlId="formBasicEmail">
@@ -34,7 +28,7 @@ function LoginForm() {
               name="email"
               type="email"
               placeholder="Enter email"
-              value={login.email}
+              value={email.email}
               onChange={handleOnChange}
             />
             <Form.Text className="text-muted">
@@ -42,26 +36,14 @@ function LoginForm() {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={login.password}
-              onChange={handleOnChange}
-            />
-          </Form.Group>
-
           <Button variant="primary" type="submit">
             Submit
           </Button>
         </Form>
-        <a href="/reset-password">Forgot Password?</a>
+        <a href="/">Login Now.</a>
       </Card>
     </div>
   );
 }
 
-export default LoginForm;
+export default PasswordResetForm;
